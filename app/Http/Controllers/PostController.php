@@ -31,6 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        // return a view that will direct to posts.create route name
         return view('posts.create');
     }
 
@@ -71,7 +72,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        // Construct a query using Elloquent syntax to find the post with the specific $id
         $post = Post::find($id);
+
+        // return a view with a pass variable of $post
         return view('posts.show')->withPost($post);
     }
 
@@ -83,7 +87,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        // find the post in the database and save it as a variable
+        $post = Post::find($id);
+
+        // return the view and pass in the var we previously created
+        return view('posts.edit')->withPost($post);
+
     }
 
     /**
