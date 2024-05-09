@@ -20,7 +20,7 @@
                 {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
                 {{ Form::label('body', 'Post Body: ') }}
-                {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
+                {{ Form::textarea('body', null, array('class' => 'form-control body-text', 'required' => '')) }}
 
                 {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px')) }}
             {!! Form::close() !!}

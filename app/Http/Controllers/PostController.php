@@ -103,8 +103,25 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        // Validate the data that is inputted
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
+
+        // Save the data to the databse
+        $post = Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+
+        $post->save();
+        // set flash data with success message
+        Session::flash('success', 'This post was successfully updated');
+
+        // redirect with flash data to psots.show
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
