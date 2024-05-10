@@ -19,13 +19,17 @@
                 {{ Form::label('title', 'Title: ') }}
                 {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
+                {{ Form::label('slug', 'Slug: ') }}
+                {{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255')) }}
+
                 {{ Form::label('body', 'Post Body: ') }}
                 {{ Form::textarea('body', null, array('class' => 'form-control body-text', 'required' => '')) }}
 
                 {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px')) }}
+                {{ Html::linkRoute('posts.index', 'Back To All Posts', [], ['class' => 'btn btn-default btn-m btn-block']) }}
             {!! Form::close() !!}
             
-        </div>
+        </div> {{-- End of Row --}}
     </div>
 
 @endsection

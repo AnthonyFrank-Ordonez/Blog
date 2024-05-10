@@ -7,11 +7,20 @@
         {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
 
         <div class="col-md-8">
-            {{ Form::label('title', 'Title: ') }}
-            {{ Form::text('title', null, ['class' => 'form-control input-lg']) }}
+            <div class="form-group">
+                {{ Form::label('title', 'Title: ') }}
+                {{ Form::text('title', null, ['class' => 'form-control input-lg']) }}
+            </div>
 
-            {{ Form::label('body', 'Post Body:', ['class' => 'form-spacing-top']) }}
-            {{ Form::textarea('body', null, ['class' => 'form-control body-text']) }}
+            <div class="form-group">
+                {{ Form::label('slug', 'Slug: ')}}
+                {{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255')) }}
+            </div>
+            
+            <div class="form-group">
+                {{ Form::label('body', 'Post Body:') }}
+                {{ Form::textarea('body', null, ['class' => 'form-control body-text']) }}
+            </div>
         </div>
 
         <div class="col-md-4">
@@ -29,11 +38,9 @@
                 <div class="row">
                     <div class="col-sm-6">
                         {!! Html::linkRoute('posts.show', 'Cancel', array($post->id), array('class' => 'btn btn-danger btn-block')) !!}
-                        {{-- <a href="#" class="btn btn-primary btn-block">Edit</a> --}}
                     </div>
                     <div class="col-sm-6">
                         {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
-                        {{-- <a href="#" class="btn btn-danger btn-block">Delete</a> --}}
                     </div>
                 </div>
 
